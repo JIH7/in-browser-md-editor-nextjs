@@ -6,6 +6,8 @@ header {
 
 body {
   height: 100vh;
+  font-family: "Roboto";
+  overflow-x: hidden;
 }
 
 header {
@@ -16,7 +18,7 @@ header h2 {
   margin: 0;
 }
 
-header.darl {
+header.dark {
   background-color: #1D1F22;
 }
 

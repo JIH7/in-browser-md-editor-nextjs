@@ -1,13 +1,11 @@
-import Header from "../components/home/header";
-import TextEditor from "../components/home/textEditor"
+import App from "../components/home/app";
 
 import "./index.css";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <TextEditor />
+      <App />
     </>
   )
 }

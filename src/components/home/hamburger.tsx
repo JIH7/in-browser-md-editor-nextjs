@@ -1,12 +1,19 @@
 import styles from "./hamburger.module.css"
 
-function hamburger() {
+interface hamburgerProps {
+  open: boolean;
+  setOpen: Function;
+}
+
+function hamburger(props: hamburgerProps) {
+  const {open, setOpen} = props;
+
   return (
-    <button className={styles.button}>
+    <button className={styles.button} onClick={() => setOpen(!open)}>
         <div className={styles.hamburger}>
-            <div className={styles.top}></div>
-            <div className={styles.middle}></div>
-            <div className={styles.bottom}></div>
+            <div className={`${styles.top} ${open ? styles.open : ''}`}></div>
+            <div className={`${styles.middle} ${open ? styles.open : ''}`}></div>
+            <div className={`${styles.bottom} ${open ? styles.open : ''}`}></div>
         </div>
     </button>
   )

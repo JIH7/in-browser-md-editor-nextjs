@@ -19,6 +19,9 @@ header {
 
 body {
     height: 100vh;
+    font-family: "Roboto";
+
+    overflow-x: hidden;
 }
 
 header {
@@ -30,7 +33,7 @@ header {
     }
 }
 
-header.darl {
+header.dark {
     background-color: $light-black;
 }
 
