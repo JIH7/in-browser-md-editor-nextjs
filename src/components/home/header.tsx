@@ -5,7 +5,12 @@ import Hamburger from "./hamburger"
 function header() {
   return (
     <header>
-        <Hamburger />
+        <nav>
+          <Hamburger />
+        </nav>
+        <h2>
+          Markdown
+        </h2>
     </header>
     )
 }

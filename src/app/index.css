@@ -9,6 +9,18 @@ body {
 }
 
 header {
+  background-color: #E4E4E4;
+}
+header h2 {
+  padding: 12px 16px;
+  margin: 0;
+}
+
+header.darl {
+  background-color: #1D1F22;
+}
+
+nav {
   background-color: #2B2D31;
 }
 
