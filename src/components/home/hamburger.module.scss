@@ -1,0 +1,43 @@
+$black: #151619;
+$light-black: #1D1F22;
+$extremely-dark-gray: #2B2D31;
+$very-dark-gray: #35393F;
+$dark-gray: #5A6069;
+$gray: #7C8187;
+$light-gray: #C1C4CB;
+$very-light-gray: #E4E4E4;
+$extremely-light-gray: #F5F5F5;
+$white: #FFFFFF;
+$orange: #E46643;
+$light-orange: #F39765;
+
+.button {
+    width: 56px;
+    height: 56px;
+    border-radius: 0;
+    border: none;
+
+    padding: 0;
+    margin: 0;
+
+    background-color: $very-dark-gray;
+}
+
+.hamburger {
+    width: 23px;
+    height: 14px;
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top,
+.middle,
+.bottom {
+    width: 100%;
+    height: 2px;
+    background-color: $white;
+}

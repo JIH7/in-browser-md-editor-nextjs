@@ -1,0 +1,26 @@
+$black: #151619;
+$light-black: #1D1F22;
+$extremely-dark-gray: #2B2D31;
+$very-dark-gray: #35393F;
+$dark-gray: #5A6069;
+$gray: #7C8187;
+$light-gray: #C1C4CB;
+$very-light-gray: #E4E4E4;
+$extremely-light-gray: #F5F5F5;
+$white: #FFFFFF;
+$orange: #E46643;
+$light-orange: #F39765;
+
+body,
+header {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    height: 100vh;
+}
+
+header {
+    background-color: $extremely-dark-gray;
+}
