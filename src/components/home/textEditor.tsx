@@ -1,8 +1,53 @@
-import styles from "./textEditor.module.css"
+import { useState } from "react"
 
-function textEditor() {
+import styles from "./textEditor.module.css"
+import ShowPreview from "../../assets/icon-show-preview.svg"
+import HidePreview from "../../assets/icon-hide-preview.svg"
+
+import ReactMarkdown from 'react-markdown'
+
+interface textEditorProps {
+  showPreview: boolean;
+  setShowPreview: Function;
+  defaultContent: string;
+}
+
+function textEditor(props: textEditorProps) {
+  const { showPreview, setShowPreview, defaultContent } = props;
+  const [ previewText, setPreviewText ] = useState(defaultContent);
+
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const inputText = event.target.value;
+    setPreviewText(inputText);
+  }
+
   return (
-    <textarea className={styles.input}></textarea>
+    <>
+    <section className={`${showPreview ? styles.sharing : ""} ${styles.section}`}>
+      <div className={styles.header}>
+        <h2 className={styles.h2}>
+          Markdown
+          <button className={`${styles.button} ${showPreview ? styles.hidden : ''}`} onClick={() => setShowPreview(!showPreview)}>
+            <ShowPreview />
+          </button>
+        </h2>
+      </div>
+      <textarea id="input" className={styles.input} onChange={handleChange} defaultValue={previewText}></textarea>
+    </section>
+    <section className={`${showPreview ? '' : styles.hidden} ${styles.section}`}>
+      <div className={styles.header}>
+        <h2 className={styles.h2}>
+          Preview
+          <button className={`${styles.button} ${!showPreview ? styles.hidden : ''}`} onClick={() => setShowPreview(!showPreview)}>
+            <HidePreview />
+          </button>
+        </h2>
+      </div>
+      <div id="preview" className={styles.preview}>
+        <ReactMarkdown>{previewText}</ReactMarkdown>
+      </div>
+    </section>
+    </>
   )
 }
 

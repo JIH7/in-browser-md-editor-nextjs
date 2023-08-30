@@ -1,6 +1,39 @@
+@charset "UTF-8";
+.header {
+  background-color: #F5F5F5;
+}
+.header h2 {
+  padding: 12px 16px;
+  margin: 0;
+}
+
+.h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sharing,
+.hidden {
+  display: none;
+}
+
+.button {
+  border: none;
+  background: none;
+}
+
+.sharing button {
+  display: none;
+}
+
 .input {
+  color: #35393F;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  overflow-wrap: break-word;
+  padding: 9px 16px 0 16px;
+  box-sizing: border-box;
   font-family: "Roboto Mono";
   font-size: 14px;
   font-style: normal;
@@ -9,6 +42,123 @@
   border: none;
   border-radius: 0;
   outline: none;
+}
+
+.preview {
+  font-family: "Roboto Slab";
+  color: #35393F;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 9px 16px 0 16px;
+  box-sizing: border-box;
+}
+.preview h1 {
+  font-family: "Roboto Slab";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.preview h2 {
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.preview h3 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.preview h4 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.preview h5 {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.preview h6 {
+  color: #E46643;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.preview p {
+  color: #7C8187;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.preview ol li {
+  color: #7C8187;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.preview ul {
+  list-style: none;
+}
+.preview ul li::before {
+  content: "•"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #E46643;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+.preview ul li {
+  color: #7C8187;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.preview blockquote {
+  margin: 0;
+  padding: 24px;
+  background-color: #F5F5F5;
+  border-left: 4px solid #E46643;
+  border-radius: 4px;
+}
+.preview blockquote p {
+  color: #35393F;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+.preview code {
+  font-family: "Roboto Mono";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.preview pre {
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #E4E4E4;
+}
+
+.section {
+  border-left: 1px solid #E4E4E4;
+}
+
+@media only screen and (min-width: 768px) {
+  .sharing {
+    display: block;
+  }
 }
 
 /*# sourceMappingURL=textEditor.module.css.map */

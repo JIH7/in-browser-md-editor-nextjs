@@ -1,8 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import Data from '../../../data.json'
 import Header from './header'
 import TextEditor from './textEditor'
+
+interface DataSet {
+  createdAt: string;
+  name: string;
+  content: string;
+}
 
 function app() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
@@ -10,9 +17,9 @@ function app() {
 
   return (
     <>
-        <Header hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} showPreview={showPreview} setShowPreview={setShowPreview} />
+        <Header hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} />
         <main>
-            <TextEditor />
+            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} defaultContent={Data[1].content}/>
         </main>
     </>
   )

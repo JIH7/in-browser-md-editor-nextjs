@@ -1,6 +1,47 @@
+$extremely-light-gray: #F5F5F5;
+$very-light-gray: #E4E4E4;
+$gray: #7C8187;
+$very-dark-gray: #35393F;
+$orange: #E46643;
+
+.header {
+    background-color: $extremely-light-gray;
+
+    h2 {
+        padding: 12px 16px;
+        margin: 0;
+    }
+}
+
+.h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sharing,
+.hidden {
+    display: none;
+}
+
+.button {
+    border: none;
+    background: none;
+}
+
+.sharing button {
+    display: none;
+}
+
 .input {
+    color: $very-dark-gray;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
+
+    overflow-wrap: break-word;
+
+    padding: 9px 16px 0 16px;
+    box-sizing: border-box;
 
     font-family: "Roboto Mono";
     font-size: 14px;
@@ -11,4 +52,146 @@
     border: none;
     border-radius: 0;
     outline: none;
+}
+
+.preview {
+    font-family: 'Roboto Slab';
+    color: $very-dark-gray;
+    width: 100%;
+    height: 100%;
+
+    overflow-y: scroll;
+    padding: 9px 16px 0 16px;
+    box-sizing: border-box;
+
+    h1 {
+        font-family: 'Roboto Slab';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    h2 {
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+    }
+
+    h3 {
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    h4 {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    h5 {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    h6 {
+        color: $orange;
+
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    p {
+        color: $gray;
+        
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+    }
+
+    ol {
+        li {
+            color: $gray;
+
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+        }
+    }
+
+    ul {
+        list-style: none;
+
+        li::before {
+            content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+            color: $orange;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        li {
+            color: $gray;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+        }
+    }
+
+    blockquote {
+        margin: 0;
+
+        padding: 24px;
+
+        background-color: $extremely-light-gray;
+        
+
+        border-left: 4px solid $orange;
+        border-radius: 4px;
+        p {
+            color: $very-dark-gray;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px;
+        }
+    }
+
+    code {
+        font-family: 'Roboto Mono';
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+    }
+
+    pre {
+        padding: 24px;
+        box-sizing: border-box;
+
+        border-radius: 4px;
+        background-color: $very-light-gray;
+    }
+}
+
+.section {
+    border-left: 1px solid $very-light-gray;
+}
+
+@media only screen and (min-width: 768px) {
+    .sharing {
+        display: block;
+    }
 }

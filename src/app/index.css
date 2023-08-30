@@ -4,18 +4,19 @@ header {
   padding: 0px;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   height: 100vh;
   font-family: "Roboto";
   overflow-x: hidden;
 }
 
-header {
-  background-color: #E4E4E4;
-}
-header h2 {
-  padding: 12px 16px;
-  margin: 0;
+main,
+section {
+  height: 100%;
 }
 
 header.dark {
@@ -24,6 +25,15 @@ header.dark {
 
 nav {
   background-color: #2B2D31;
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+    display: flex;
+  }
+  main > section {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
