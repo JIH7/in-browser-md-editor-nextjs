@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import styles from "./textEditor.module.css"
 import ShowPreview from "../../assets/icon-show-preview.svg"
@@ -9,16 +9,29 @@ import ReactMarkdown from 'react-markdown'
 interface TextEditorProps {
   showPreview: boolean;
   setShowPreview: Function;
-  defaultContent: string;
+  content: string;
   darkMode: boolean;
+  
 }
 
 function TextEditor(props: TextEditorProps) {
-  const { showPreview, setShowPreview, defaultContent, darkMode } = props;
-  const [ previewText, setPreviewText ] = useState(defaultContent);
+  const { showPreview, setShowPreview, content, darkMode } = props;
+  const [ previewText, setPreviewText ] = useState(content);
+
+  useEffect(() => {
+    setPreviewText(content);
+    const textArea = document.querySelector('textarea');
+
+    if(textArea) {
+      textArea.value = content;
+    }
+    console.log("useEffect trigger")
+  }, [content])
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputText = event.target.value;
+
+
     setPreviewText(inputText);
   }
 

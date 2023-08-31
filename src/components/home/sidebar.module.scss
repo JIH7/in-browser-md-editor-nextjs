@@ -1,3 +1,4 @@
+$very-dark-gray: #35393F;
 $gray: #7C8187;
 $orange: #E46643;
 $light-orange: #F39765;
@@ -41,6 +42,64 @@ $light-orange: #F39765;
 
 .button:hover {
     background-color: $light-orange;
+    cursor: pointer;
+}
+
+.files {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 0;
+    list-style: none;
+
+    > * {
+        margin-block-start: 17px;
+    }
+
+    li {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        transition: color .3s ease-in;
+        border-radius: 4px;
+
+        padding: 7px;
+        width: 100%;
+
+        div {
+            margin-left: 16px;
+
+            > * {
+                margin: 0;
+            }
+
+            h5 {
+                color: $gray;
+                font-family: 'Roboto';
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: normal;
+            }
+
+            h4 {
+                margin-block-start: 3px;
+
+                color: white;
+                font-family: 'Roboto';
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+    }
+
+    li:hover {
+        background-color: $very-dark-gray;
+        cursor: pointer;
+    }
 }
 
 @media only screen and (min-width: 1024px) {

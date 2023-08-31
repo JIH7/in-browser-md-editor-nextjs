@@ -23,6 +23,10 @@ $light-orange: #F39765;
     background-color: $very-dark-gray;
 }
 
+.button:hover {
+    cursor: pointer;
+}
+
 .hamburger {
     width: 23px;
     height: 14px;

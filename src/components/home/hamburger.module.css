@@ -8,6 +8,10 @@
   background-color: #35393F;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 .hamburger {
   width: 23px;
   height: 14px;

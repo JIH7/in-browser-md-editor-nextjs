@@ -1,5 +1,6 @@
-import styles from './sidebar.module.css'
-import DarkModeToggle from './DarkModeToggle'
+import styles from './sidebar.module.css';
+import FileTile from './FileTile';
+import DarkModeToggle from './DarkModeToggle';
 import DataSet from './DataSetInterface';
 
 interface SidebarProps {
@@ -8,10 +9,11 @@ interface SidebarProps {
     toggleDarkMode: Function;
     setCurrentFile: Function;
     fileList: Array<DataSet>;
+    setFileList: Function;
 }
 
 function Sidebar(props : SidebarProps) {
-    const { classes, darkMode, toggleDarkMode, setCurrentFile, fileList } = props;
+    const { classes, darkMode, toggleDarkMode, setCurrentFile, fileList, setFileList } = props;
 
   return (
     <aside className={`${classes}`}>
@@ -19,7 +21,13 @@ function Sidebar(props : SidebarProps) {
       <h3 className={styles.h3}>MY DOCUMENTS</h3>
       <button className={styles.button}>+ New Document</button>
 
-
+      <ul className={styles.files}>
+        {
+          fileList.map((el, i) => (
+            <FileTile file={el} key={i} fileNum={i} setCurrentFile={setCurrentFile} />
+          ))
+        }
+      </ul>
 
       <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
     </aside>

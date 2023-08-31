@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Data from '../../../data.json'
 import DataSet from './DataSetInterface'
 import Header from './Header'
@@ -23,9 +23,9 @@ function Main() {
         <Header classes={hamburgerOpen ? 'pushed' : ''} hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} fileName={fileList[currentFile].name}/>
         <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
             {/* ToDo: Make default content last accessed file */}
-            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} defaultContent={Data[currentFile].content} darkMode/>
+            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} content={Data[currentFile].content} darkMode/>
         </main>
-        <Sidebar classes={hamburgerOpen ? 'pushed' : ''} darkMode={darkMode} toggleDarkMode={toggleDarkMode} setCurrentFile={setCurrentFile} fileList={fileList}/>
+        <Sidebar classes={hamburgerOpen ? 'pushed' : ''} darkMode={darkMode} toggleDarkMode={toggleDarkMode} setCurrentFile={setCurrentFile} fileList={fileList} setFileList={setFileList}/>
     </>
   )
 }
