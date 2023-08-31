@@ -159,6 +159,7 @@
 .preview pre {
   padding: 24px;
   box-sizing: border-box;
+  max-width: 100%;
   border-radius: 4px;
   background-color: #E4E4E4;
   overflow-x: auto;
@@ -167,7 +168,6 @@
 .section {
   border-left: 1px solid #E4E4E4;
   box-sizing: border-box;
-  flex-grow: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -181,6 +181,10 @@
 @media only screen and (min-width: 768px) {
   .sharing {
     display: flex;
+  }
+  .sharing,
+  .section:has(.preview) {
+    width: 50%;
   }
 }
 

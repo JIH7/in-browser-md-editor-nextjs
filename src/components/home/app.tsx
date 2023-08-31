@@ -2,20 +2,17 @@
 
 import { useState } from 'react'
 import Data from '../../../data.json'
-import Header from './header'
-import TextEditor from './textEditor'
-import Sidebar from './sidebar'
-
-interface DataSet {
-  createdAt: string;
-  name: string;
-  content: string;
-}
+import DataSet from './DataSetInterface'
+import Header from './Header'
+import TextEditor from './TextEditor'
+import Sidebar from './Sidebar'
 
 function app() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [currentFile, setCurrentFile] = useState(0)
+  const [fileList, setFileList] = useState(Data);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -23,11 +20,12 @@ function app() {
 
   return (
     <>
-        <Header classes={hamburgerOpen ? 'pushed' : ''} hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} />
+        <Header classes={hamburgerOpen ? 'pushed' : ''} hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} fileName={fileList[currentFile].name}/>
         <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
-            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} defaultContent={Data[1].content}/>
+            {/* ToDo: Make default content last accessed file */}
+            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} defaultContent={Data[currentFile].content} darkMode/>
         </main>
-        <Sidebar classes={hamburgerOpen ? 'pushed' : ''} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Sidebar classes={hamburgerOpen ? 'pushed' : ''} darkMode={darkMode} toggleDarkMode={toggleDarkMode} setCurrentFile={setCurrentFile} fileList={fileList}/>
     </>
   )
 }

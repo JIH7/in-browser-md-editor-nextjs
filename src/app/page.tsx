@@ -1,4 +1,4 @@
-import App from "../components/home/app";
+import App from "../components/home/App";
 
 import "./index.css";
 

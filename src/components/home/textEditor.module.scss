@@ -202,6 +202,8 @@ $orange: #E46643;
         padding: 24px;
         box-sizing: border-box;
 
+        max-width: 100%;
+
         border-radius: 4px;
         background-color: $very-light-gray;
 
@@ -212,7 +214,6 @@ $orange: #E46643;
 .section {
     border-left: 1px solid $very-light-gray;
     box-sizing: border-box;
-    flex-grow: 1;
     height: 100%;
 
     display: flex;
@@ -227,5 +228,10 @@ $orange: #E46643;
 @media only screen and (min-width: 768px) {
     .sharing {
         display: flex;
+    }
+
+    .sharing,
+    .section:has(.preview) {
+        width: 50%;
     }
 }

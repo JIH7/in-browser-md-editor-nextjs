@@ -10,10 +10,11 @@ interface textEditorProps {
   showPreview: boolean;
   setShowPreview: Function;
   defaultContent: string;
+  darkMode: boolean;
 }
 
 function textEditor(props: textEditorProps) {
-  const { showPreview, setShowPreview, defaultContent } = props;
+  const { showPreview, setShowPreview, defaultContent, darkMode } = props;
   const [ previewText, setPreviewText ] = useState(defaultContent);
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -44,7 +45,7 @@ function textEditor(props: textEditorProps) {
 
   return (
     <>
-    <section className={`${showPreview ? styles.sharing : ""} ${styles.section}`}>
+    <section className={`${showPreview ? styles.sharing : ""} ${darkMode ? styles.dark : ''} ${styles.section}`}>
       <div className={styles.header}>
         <h2 className={styles.h2}>
           Markdown
@@ -60,7 +61,7 @@ function textEditor(props: textEditorProps) {
       onKeyDown={handleTabKeyPress}
       defaultValue={previewText}></textarea>
     </section>
-    <section className={`${showPreview ? '' : styles.hidden} ${styles.section}`}>
+    <section className={`${showPreview ? '' : styles.hidden} ${darkMode ? styles.dark : ''} ${styles.section}`}>
       <div className={styles.header}>
         <h2 className={styles.h2}>
           Preview
