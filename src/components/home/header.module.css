@@ -1,3 +1,21 @@
+.h2 {
+  display: none;
+}
 
+@media only screen and (min-width: 1024px) {
+  .h2 {
+    display: block;
+    color: white;
+    font-family: "Commissioner";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 5px;
+    box-sizing: border-box;
+    padding: 5px 29px 5px 24px;
+    border-right: 1px solid #5A6069;
+  }
+}
 
 /*# sourceMappingURL=header.module.css.map */

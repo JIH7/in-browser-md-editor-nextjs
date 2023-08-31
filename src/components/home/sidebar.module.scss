@@ -42,3 +42,9 @@ $light-orange: #F39765;
 .button:hover {
     background-color: $light-orange;
 }
+
+@media only screen and (min-width: 1024px) {
+    .h2 {
+        display: none;
+    }
+}

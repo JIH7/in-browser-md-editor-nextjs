@@ -15,14 +15,19 @@ interface DataSet {
 function app() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  }
 
   return (
     <>
         <Header classes={hamburgerOpen ? 'pushed' : ''} hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} />
-        <main className={hamburgerOpen ? 'pushed' : ''}>
+        <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
             <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} defaultContent={Data[1].content}/>
         </main>
-        <Sidebar classes={hamburgerOpen ? 'pushed' : ''} />
+        <Sidebar classes={hamburgerOpen ? 'pushed' : ''} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </>
   )
 }

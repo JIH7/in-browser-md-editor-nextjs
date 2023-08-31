@@ -1,0 +1,30 @@
+.component {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+}
+
+.button {
+  border-radius: 14.5px;
+  height: 24px;
+  width: 48px;
+  outline: none;
+  border: none;
+  background-color: #5A6069;
+}
+
+.knob {
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  position: relative;
+  left: 65%;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.knob.active {
+  left: 0%;
+}
+
+/*# sourceMappingURL=darkModeToggle.module.css.map */

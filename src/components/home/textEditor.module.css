@@ -101,6 +101,9 @@
   font-weight: 700;
   line-height: normal;
 }
+.preview a {
+  color: #35393F;
+}
 .preview p {
   color: #7C8187;
   font-size: 14px;

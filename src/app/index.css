@@ -1,3 +1,7 @@
+* {
+  transition: color 0.4s ease-in-out;
+}
+
 body,
 header,
 main {
@@ -37,6 +41,12 @@ body,
 header {
   margin: 0px;
   padding: 0px;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 html {

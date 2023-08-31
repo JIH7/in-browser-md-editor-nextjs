@@ -16,6 +16,7 @@ function header(props: headerProps) {
     <header className={classes}>
         <nav>
           <Hamburger open={hamburgerOpen} setOpen={setHamburgerOpen} />
+          <h2 className={styles.h2}>MARKDOWN</h2>
         </nav>
     </header>
     )
