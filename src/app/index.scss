@@ -11,6 +11,47 @@ $white: #FFFFFF;
 $orange: #E46643;
 $light-orange: #F39765;
 
+$aside-width: 250px;
+
+body,
+header,
+main {
+    position: relative;
+    left: 0;
+    transition: all .35s ease-out;
+}
+
+header.pushed,
+main.pushed {
+    left: $aside-width;
+}
+
+aside {
+    position: fixed;
+    transition: all .35s ease-out;
+    box-sizing: border-box;
+    height: 100vh;
+    width: $aside-width;
+    background-color: $light-black;
+    overflow-y: auto;
+
+    padding: 27px 24px;
+
+    left: -$aside-width;
+
+    > * {
+        margin: 0;
+    }
+
+    > * + * {
+        margin-block-start: 24px;
+    }
+}
+
+aside.pushed {
+    left: 0;
+}
+
 body,
 header {
     margin: 0px;
@@ -24,11 +65,21 @@ body {
     font-family: "Roboto";
 
     overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    flex-shrink: 1;
+    box-sizing: border-box;
+    max-height: calc(100% - 56px);
 }
 
 main,
 section {
-    height: 100%;
+    box-sizing: border-box;
 }
 
 header.dark {
@@ -42,6 +93,7 @@ nav {
 @media only screen and (min-width: 768px) {
     main {
         display: flex;
+        align-items: stretch;
 
         > section {
             width: 100%;

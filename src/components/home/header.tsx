@@ -6,14 +6,14 @@ import Hamburger from "./hamburger"
 interface headerProps {
   hamburgerOpen: boolean;
   setHamburgerOpen: Function;
-
+  classes: string;
 }
 
 function header(props: headerProps) {
-  const { hamburgerOpen, setHamburgerOpen } = props;
+  const { hamburgerOpen, setHamburgerOpen, classes } = props;
 
   return (
-    <header>
+    <header className={classes}>
         <nav>
           <Hamburger open={hamburgerOpen} setOpen={setHamburgerOpen} />
         </nav>

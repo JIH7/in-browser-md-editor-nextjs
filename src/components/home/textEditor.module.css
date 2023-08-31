@@ -13,11 +13,6 @@
   align-items: center;
 }
 
-.sharing,
-.hidden {
-  display: none;
-}
-
 .button {
   border: none;
   background: none;
@@ -30,9 +25,10 @@
 .input {
   color: #35393F;
   width: 100%;
-  height: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
   overflow-wrap: break-word;
-  padding: 9px 16px 0 16px;
+  padding: 9px 16px 9px 16px;
   box-sizing: border-box;
   font-family: "Roboto Mono";
   font-size: 14px;
@@ -44,13 +40,27 @@
   outline: none;
 }
 
+.preview > * {
+  margin: 0;
+}
+.preview > * + * {
+  margin-block-start: 20px;
+}
+.preview > * + h1 {
+  margin-block-start: 22px;
+}
+.preview > ol > li + li,
+.preview > ul > li + li {
+  margin-block-start: 4px;
+}
+
 .preview {
   font-family: "Roboto Slab";
   color: #35393F;
   width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  padding: 9px 16px 0 16px;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 9px 16px 9px 16px;
   box-sizing: border-box;
 }
 .preview h1 {
@@ -124,7 +134,6 @@
   line-height: 24px;
 }
 .preview blockquote {
-  margin: 0;
   padding: 24px;
   background-color: #F5F5F5;
   border-left: 4px solid #E46643;
@@ -149,15 +158,26 @@
   box-sizing: border-box;
   border-radius: 4px;
   background-color: #E4E4E4;
+  overflow-x: auto;
 }
 
 .section {
   border-left: 1px solid #E4E4E4;
+  box-sizing: border-box;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sharing,
+.hidden {
+  display: none;
 }
 
 @media only screen and (min-width: 768px) {
   .sharing {
-    display: block;
+    display: flex;
   }
 }
 

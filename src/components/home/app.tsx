@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Data from '../../../data.json'
 import Header from './header'
 import TextEditor from './textEditor'
+import Sidebar from './sidebar'
 
 interface DataSet {
   createdAt: string;
@@ -17,10 +18,11 @@ function app() {
 
   return (
     <>
-        <Header hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} />
-        <main>
+        <Header classes={hamburgerOpen ? 'pushed' : ''} hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} />
+        <main className={hamburgerOpen ? 'pushed' : ''}>
             <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} defaultContent={Data[1].content}/>
         </main>
+        <Sidebar classes={hamburgerOpen ? 'pushed' : ''} />
     </>
   )
 }

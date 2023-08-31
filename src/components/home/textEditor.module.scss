@@ -19,11 +19,6 @@ $orange: #E46643;
     align-items: center;
 }
 
-.sharing,
-.hidden {
-    display: none;
-}
-
 .button {
     border: none;
     background: none;
@@ -36,11 +31,12 @@ $orange: #E46643;
 .input {
     color: $very-dark-gray;
     width: 100%;
-    height: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
 
     overflow-wrap: break-word;
 
-    padding: 9px 16px 0 16px;
+    padding: 9px 16px 9px 16px;
     box-sizing: border-box;
 
     font-family: "Roboto Mono";
@@ -54,15 +50,38 @@ $orange: #E46643;
     outline: none;
 }
 
+//Preview element margins
+
+.preview {
+    > * {
+        margin: 0;
+    }
+
+    > * + * {
+        margin-block-start: 20px;
+    }
+
+    > * + h1 {
+        margin-block-start: 22px;
+    }
+
+    > ol > li + li,
+    > ul > li + li {
+        margin-block-start: 4px;
+    }
+}
+
+//Preview element other styles
 .preview {
     font-family: 'Roboto Slab';
     color: $very-dark-gray;
     width: 100%;
-    height: 100%;
+    flex-grow: 1;
 
-    overflow-y: scroll;
-    padding: 9px 16px 0 16px;
+    overflow-y: auto;
+    padding: 9px 16px 9px 16px;
     box-sizing: border-box;
+
 
     h1 {
         font-family: 'Roboto Slab';
@@ -151,8 +170,6 @@ $orange: #E46643;
     }
 
     blockquote {
-        margin: 0;
-
         padding: 24px;
 
         background-color: $extremely-light-gray;
@@ -183,15 +200,28 @@ $orange: #E46643;
 
         border-radius: 4px;
         background-color: $very-light-gray;
+
+        overflow-x: auto;
     }
 }
 
 .section {
     border-left: 1px solid $very-light-gray;
+    box-sizing: border-box;
+    flex-grow: 1;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sharing,
+.hidden {
+    display: none;
 }
 
 @media only screen and (min-width: 768px) {
     .sharing {
-        display: block;
+        display: flex;
     }
 }

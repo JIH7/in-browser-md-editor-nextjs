@@ -21,6 +21,27 @@ function textEditor(props: textEditorProps) {
     setPreviewText(inputText);
   }
 
+  const handleTabKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+  
+      const textarea = event.currentTarget;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+  
+      const updatedText = previewText.substring(0, start) + '\t' + previewText.substring(end);
+  
+      // Update the textarea value directly
+      textarea.value = updatedText;
+  
+      // Move the cursor position after the inserted tab character
+      textarea.selectionStart = textarea.selectionEnd = start + 1;
+  
+      // Trigger the handleChange event manually to update the state
+      handleChange({ target: textarea } as React.ChangeEvent<HTMLTextAreaElement>);
+    }
+  };
+
   return (
     <>
     <section className={`${showPreview ? styles.sharing : ""} ${styles.section}`}>
@@ -32,7 +53,12 @@ function textEditor(props: textEditorProps) {
           </button>
         </h2>
       </div>
-      <textarea id="input" className={styles.input} onChange={handleChange} defaultValue={previewText}></textarea>
+      <textarea
+      id="input"
+      className={styles.input}
+      onChange={handleChange}
+      onKeyDown={handleTabKeyPress}
+      defaultValue={previewText}></textarea>
     </section>
     <section className={`${showPreview ? '' : styles.hidden} ${styles.section}`}>
       <div className={styles.header}>
