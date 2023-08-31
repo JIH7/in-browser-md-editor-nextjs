@@ -7,7 +7,7 @@ import Header from './Header'
 import TextEditor from './TextEditor'
 import Sidebar from './Sidebar'
 
-function app() {
+function App() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -30,4 +30,4 @@ function app() {
   )
 }
 
-export default app
+export default App

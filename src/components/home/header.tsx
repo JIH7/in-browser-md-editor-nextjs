@@ -3,14 +3,14 @@ import styles from "./header.module.css"
 import Hamburger from "./Hamburger"
 import FileIcon from "../../assets/icon-document.svg"
 
-interface headerProps {
+interface HeaderProps {
   hamburgerOpen: boolean;
   setHamburgerOpen: Function;
   classes: string;
   fileName: string;
 }
 
-function header(props: headerProps) {
+function Header(props: HeaderProps) {
   const { hamburgerOpen, setHamburgerOpen, classes, fileName } = props;
 
   return (
@@ -24,4 +24,4 @@ function header(props: headerProps) {
     )
 }
 
-export default header
+export default Header

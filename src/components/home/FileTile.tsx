@@ -1,8 +1,8 @@
-interface fileTileProps {
+interface FileTileProps {
     
 }
 
-function fileTile() {
+function FileTile() {
   return (
     <div>
       
@@ -10,4 +10,4 @@ function fileTile() {
   )
 }
 
-export default fileTile
+export default FileTile

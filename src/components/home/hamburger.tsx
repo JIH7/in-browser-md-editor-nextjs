@@ -1,11 +1,11 @@
 import styles from "./hamburger.module.css"
 
-interface hamburgerProps {
+interface HamburgerProps {
   open: boolean;
   setOpen: Function;
 }
 
-function hamburger(props: hamburgerProps) {
+function Hamburger(props: HamburgerProps) {
   const {open, setOpen} = props;
 
   return (
@@ -19,4 +19,4 @@ function hamburger(props: hamburgerProps) {
   )
 }
 
-export default hamburger
+export default Hamburger

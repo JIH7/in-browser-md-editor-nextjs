@@ -2,7 +2,7 @@ import styles from './sidebar.module.css'
 import DarkModeToggle from './DarkModeToggle'
 import DataSet from './DataSetInterface';
 
-interface sidebarProps {
+interface SidebarProps {
     classes: string;
     darkMode: boolean;
     toggleDarkMode: Function;
@@ -10,7 +10,7 @@ interface sidebarProps {
     fileList: Array<DataSet>;
 }
 
-function sidebar(props : sidebarProps) {
+function Sidebar(props : SidebarProps) {
     const { classes, darkMode, toggleDarkMode, setCurrentFile, fileList } = props;
 
   return (
@@ -26,4 +26,4 @@ function sidebar(props : sidebarProps) {
   )
 }
 
-export default sidebar
+export default Sidebar

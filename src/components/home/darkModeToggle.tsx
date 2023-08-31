@@ -3,12 +3,12 @@ import styles from './darkModeToggle.module.css'
 import MoonIcon from '../../assets/icon-dark-mode.svg'
 import SunIcon from '../../assets/icon-light-mode.svg'
 
-interface darkModeToggleProps {
+interface DarkModeToggleProps {
     darkMode: boolean;
     toggleDarkMode: Function;
 }
 
-function darkModeToggle(props: darkModeToggleProps) {
+function DarkModeToggle(props: DarkModeToggleProps) {
     const { darkMode, toggleDarkMode } = props;
 
   return (
@@ -22,4 +22,4 @@ function darkModeToggle(props: darkModeToggleProps) {
   )
 }
 
-export default darkModeToggle
+export default DarkModeToggle

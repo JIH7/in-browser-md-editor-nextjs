@@ -6,14 +6,14 @@ import HidePreview from "../../assets/icon-hide-preview.svg"
 
 import ReactMarkdown from 'react-markdown'
 
-interface textEditorProps {
+interface TextEditorProps {
   showPreview: boolean;
   setShowPreview: Function;
   defaultContent: string;
   darkMode: boolean;
 }
 
-function textEditor(props: textEditorProps) {
+function TextEditor(props: TextEditorProps) {
   const { showPreview, setShowPreview, defaultContent, darkMode } = props;
   const [ previewText, setPreviewText ] = useState(defaultContent);
 
@@ -78,4 +78,4 @@ function textEditor(props: textEditorProps) {
   )
 }
 
-export default textEditor
+export default TextEditor
