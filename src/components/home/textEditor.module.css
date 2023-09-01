@@ -28,6 +28,24 @@
 .dark .preview h6 {
   color: white;
 }
+.dark .preview h1 a,
+.dark .preview h2 a,
+.dark .preview h3 a,
+.dark .preview h4 a,
+.dark .preview h5 a,
+.dark .preview h6 a {
+  color: white;
+}
+.dark .preview p,
+.dark .preview ul > li,
+.dark .preview ol > li {
+  color: #C1C4CB;
+}
+.dark .preview p a,
+.dark .preview ul > li a,
+.dark .preview ol > li a {
+  color: #C1C4CB;
+}
 .dark .preview code {
   color: white;
 }

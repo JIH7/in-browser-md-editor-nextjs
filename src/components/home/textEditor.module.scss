@@ -41,6 +41,20 @@ $orange: #E46643;
         h5,
         h6 {
             color: white;
+
+            a {
+                color: white;
+            }
+        }
+
+        p,
+        ul > li,
+        ol > li {
+            color: $light-gray;
+
+            a {
+                color: $light-gray;
+            }
         }
 
         code {

@@ -1,3 +1,4 @@
+$light-black: #1D1F22;
 $very-dark-gray: #35393F;
 $gray: #7C8187;
 $orange: #E46643;
@@ -46,9 +47,23 @@ $light-orange: #F39765;
 }
 
 .files {
+    scrollbar-color: $light-black;
+
+    ::-webkit-scrollbar {
+        background: $light-black;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $very-dark-gray;
+    }
+
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    max-height: 70%;
+    overflow-y: auto;
 
     padding: 0;
     list-style: none;

@@ -33,7 +33,6 @@ aside {
   height: 100vh;
   width: 250px;
   background-color: #1D1F22;
-  overflow-y: auto;
   padding: 27px 24px;
   left: -250px;
 }
