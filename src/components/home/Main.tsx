@@ -17,11 +17,28 @@ function Main() {
   useEffect(() => {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setDarkMode(prefersDark);
-
-    Data.forEach((el) => {
-      setDate(el);
-    })
+    checkForLocalFiles()
+   
   }, []);
+
+  useEffect(() => {
+    saveLocalFiles();
+  }, [fileList])
+
+  const checkForLocalFiles = () => {
+    if (localStorage.getItem('files') !== null) {
+      const files = JSON.parse(localStorage.getItem('files') ?? "");
+      setFileList(files);
+    } else {
+      Data.forEach((el) => {
+        setDate(el);
+      })
+    }
+  }
+
+  const saveLocalFiles = () => {
+    localStorage.setItem('files', JSON.stringify(fileList))
+  }
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -74,7 +91,7 @@ function Main() {
         changeFileName={changeFileName}/>
         <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
             {/* ToDo: Make default content last accessed file */}
-            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} content={Data[currentFile].content} darkMode={darkMode}/>
+            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} content={fileList[currentFile].content} darkMode={darkMode}/>
         </main>
         <Sidebar
         classes={hamburgerOpen ? 'pushed' : ''}
