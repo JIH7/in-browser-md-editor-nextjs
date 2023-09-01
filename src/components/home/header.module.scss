@@ -1,4 +1,6 @@
 $dark-gray: #5A6069;
+$orange: #E46643;
+$light-orange: #F39765;
 
 .h2 {
     display: none;
@@ -23,6 +25,57 @@ $dark-gray: #5A6069;
     }
 }
 
+.right {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    align-items: center;
+
+    > svg {
+        margin-right: 24px;
+        padding: 8px;
+        border-radius: 4px;
+    }
+
+    > svg:hover {
+        background-color: $dark-gray;
+    }
+
+    button {
+        box-sizing: border-box;
+        height: 40px;
+        min-width: 40px;
+        width: auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition-duration: .1s;
+
+        border: none;
+        outline: none;
+        border-radius: 4px;
+
+        background-color: $orange;
+
+        span {
+            display: none;
+
+            color: white;
+            font-family: 'Roboto';
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+    button:hover {
+        background-color: $light-orange;
+    }
+}
+
 @media only screen and (min-width: 1024px) {
     .h2 {
         display: block;
@@ -37,5 +90,13 @@ $dark-gray: #5A6069;
         box-sizing: border-box;
         padding: 5px 29px 5px 24px;
         border-right: 1px solid $dark-gray;
+    }
+
+    .right button {
+        padding: 0 16px;
+
+        span {
+            display: block;
+        }
     }
 }

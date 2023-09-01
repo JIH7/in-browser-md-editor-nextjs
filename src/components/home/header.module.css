@@ -18,6 +18,47 @@
   margin-right: 16px;
 }
 
+.right {
+  position: absolute;
+  right: 8px;
+  display: flex;
+  align-items: center;
+}
+.right > svg {
+  margin-right: 24px;
+  padding: 8px;
+  border-radius: 4px;
+}
+.right > svg:hover {
+  background-color: #5A6069;
+}
+.right button {
+  box-sizing: border-box;
+  height: 40px;
+  min-width: 40px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.1s;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background-color: #E46643;
+}
+.right button span {
+  display: none;
+  color: white;
+  font-family: "Roboto";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.right button:hover {
+  background-color: #F39765;
+}
+
 @media only screen and (min-width: 1024px) {
   .h2 {
     display: block;
@@ -31,6 +72,12 @@
     box-sizing: border-box;
     padding: 5px 29px 5px 24px;
     border-right: 1px solid #5A6069;
+  }
+  .right button {
+    padding: 0 16px;
+  }
+  .right button span {
+    display: block;
   }
 }
 

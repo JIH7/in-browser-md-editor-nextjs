@@ -4,9 +4,14 @@ $dark-gray: #5A6069;
     position: absolute;
     bottom: 24px;
     left: 24px;
+
+    display: flex;
+    align-items: center;
 }
 
 .button {
+    margin: 0 10px;
+
     border-radius: 14.5px;
     height: 24px;
     width: 48px;
