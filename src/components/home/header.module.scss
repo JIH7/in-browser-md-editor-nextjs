@@ -20,6 +20,23 @@ $light-orange: #F39765;
     font-weight: 400;
     line-height: normal;
 
+    > span {
+        outline: none;
+
+        min-width: 12px;
+        padding: 4px;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+
+    > span:hover {
+        background-color: $dark-gray;
+    }
+
+    > span:focus {
+        background-color: inherit;
+    }
+
     > svg {
         margin-right: 16px;
     }

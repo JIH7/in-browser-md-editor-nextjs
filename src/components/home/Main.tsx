@@ -51,9 +51,27 @@ function Main() {
     setFileList(tempFileList);
   }
 
+  const changeFileName = (newName: string) => {
+    if (newName === "")
+      return
+
+    const tempFileList = [...fileList];
+    
+    if (newName.substring(newName.length - 3) !== '.md')
+      newName += '.md';
+
+    tempFileList[currentFile].name = newName;
+    setFileList(tempFileList);
+  }
+
   return (
     <>
-        <Header classes={hamburgerOpen ? 'pushed' : ''} hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} fileName={fileList[currentFile].name}/>
+        <Header
+        classes={hamburgerOpen ? 'pushed' : ''}
+        hamburgerOpen={hamburgerOpen}
+        setHamburgerOpen={setHamburgerOpen}
+        fileName={fileList[currentFile].name}
+        changeFileName={changeFileName}/>
         <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
             {/* ToDo: Make default content last accessed file */}
             <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} content={Data[currentFile].content} darkMode={darkMode}/>

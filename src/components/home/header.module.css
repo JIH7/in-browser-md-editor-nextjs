@@ -14,6 +14,19 @@
   font-weight: 400;
   line-height: normal;
 }
+.h3 > span {
+  outline: none;
+  min-width: 12px;
+  padding: 4px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.h3 > span:hover {
+  background-color: #5A6069;
+}
+.h3 > span:focus {
+  background-color: inherit;
+}
 .h3 > svg {
   margin-right: 16px;
 }

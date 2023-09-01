@@ -10,17 +10,36 @@ interface HeaderProps {
   setHamburgerOpen: Function;
   classes: string;
   fileName: string;
+  changeFileName: Function;
 }
 
 function Header(props: HeaderProps) {
-  const { hamburgerOpen, setHamburgerOpen, classes, fileName } = props;
+  const { hamburgerOpen, setHamburgerOpen, classes, fileName, changeFileName } = props;
+
+  const handleEnterKeyPress = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    if(event.key === "Enter") {
+      event.preventDefault();
+      const newName = event.currentTarget.textContent ?? "";
+      console.log(newName)
+
+      if (newName !== ".md" && newName !== "") {
+        changeFileName(newName);
+      } else {
+        event.currentTarget.textContent = fileName;
+      }
+
+      event.currentTarget.blur();
+    }
+  }
 
   return (
     <header className={classes}>
         <nav>
           <Hamburger open={hamburgerOpen} setOpen={setHamburgerOpen} />
           <h2 className={styles.h2}>MARKDOWN</h2>
-          <h3 className={styles.h3}><FileIcon /> {fileName}</h3>
+          <h3 className={styles.h3}><FileIcon /> <span
+          contentEditable="true"
+          onKeyDown={handleEnterKeyPress}>{fileName}</span></h3>
 
           <div className={styles.right}>
             <TrashIcon />
