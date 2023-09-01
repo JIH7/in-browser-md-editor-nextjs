@@ -14,6 +14,11 @@ function Main() {
   const [currentFile, setCurrentFile] = useState(0)
   const [fileList, setFileList] = useState(Data);
 
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setDarkMode(prefersDark);
+  }, []);
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   }
@@ -23,7 +28,7 @@ function Main() {
         <Header classes={hamburgerOpen ? 'pushed' : ''} hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen} fileName={fileList[currentFile].name}/>
         <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
             {/* ToDo: Make default content last accessed file */}
-            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} content={Data[currentFile].content} darkMode/>
+            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} content={Data[currentFile].content} darkMode={darkMode}/>
         </main>
         <Sidebar classes={hamburgerOpen ? 'pushed' : ''} darkMode={darkMode} toggleDarkMode={toggleDarkMode} setCurrentFile={setCurrentFile} fileList={fileList} setFileList={setFileList}/>
     </>

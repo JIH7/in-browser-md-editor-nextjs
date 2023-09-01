@@ -1,5 +1,16 @@
+::-webkit-scrollbar {
+  background: #F5F5F5;
+  height: 100%;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C1C4CB;
+}
+
 * {
-  transition: color 0.4s ease-in-out;
+  transition-property: color, background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
 }
 
 body,

@@ -13,8 +13,19 @@ $light-orange: #F39765;
 
 $aside-width: 250px;
 
+::-webkit-scrollbar {
+    background: $extremely-light-gray;
+    height: 100%;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $light-gray;
+}
+
 * {
-    transition: color .4s ease-in-out;
+    transition-property: color, background-color;
+    transition-duration: .3s;
+    transition-timing-function: ease-in;
 }
 
 body,

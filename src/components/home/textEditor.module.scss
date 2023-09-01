@@ -1,8 +1,63 @@
 $extremely-light-gray: #F5F5F5;
 $very-light-gray: #E4E4E4;
+$light-gray: #C1C4CB;
 $gray: #7C8187;
+$dark-gray: #5A6069;
 $very-dark-gray: #35393F;
+$extremely-dark-gray: #2B2D31;
+$light-black: #1D1F22;
+$black: #151619;
 $orange: #E46643;
+
+.dark {
+    scrollbar-color: $light-black;
+
+    ::-webkit-scrollbar {
+        background: $light-black;
+        height: 100%;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $very-dark-gray;
+    }
+
+    > div {
+        background-color: $light-black;
+        color: $light-gray;
+    }
+
+    textarea {
+        background-color: $black;
+        color: $light-gray;
+    }
+
+    .preview {
+        background-color: $black;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: white;
+        }
+
+        code {
+            color: white;
+        }
+
+        blockquote,
+        pre {
+            background-color: $extremely-dark-gray;
+            p,
+            a,
+            code {
+                color: white;
+            }
+        }
+    }
+}
 
 .header {
     background-color: $extremely-light-gray;
@@ -29,6 +84,7 @@ $orange: #E46643;
 }
 
 .input {
+    resize: none;
     color: $very-dark-gray;
     width: 100%;
     flex-grow: 1;
@@ -212,7 +268,6 @@ $orange: #E46643;
 }
 
 .section {
-    border-left: 1px solid $very-light-gray;
     box-sizing: border-box;
     height: 100%;
 
@@ -233,5 +288,13 @@ $orange: #E46643;
     .sharing,
     .section:has(.preview) {
         width: 50%;
+    }
+
+    .section + .section {
+        border-left: 1px solid $very-light-gray;
+    }
+
+    .section.dark + .section.dark {
+        border-left: 1px solid $dark-gray;
     }
 }

@@ -1,4 +1,49 @@
 @charset "UTF-8";
+.dark {
+  scrollbar-color: #1D1F22;
+}
+.dark ::-webkit-scrollbar {
+  background: #1D1F22;
+  height: 100%;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #35393F;
+}
+.dark > div {
+  background-color: #1D1F22;
+  color: #C1C4CB;
+}
+.dark textarea {
+  background-color: #151619;
+  color: #C1C4CB;
+}
+.dark .preview {
+  background-color: #151619;
+}
+.dark .preview h1,
+.dark .preview h2,
+.dark .preview h3,
+.dark .preview h4,
+.dark .preview h5,
+.dark .preview h6 {
+  color: white;
+}
+.dark .preview code {
+  color: white;
+}
+.dark .preview blockquote,
+.dark .preview pre {
+  background-color: #2B2D31;
+}
+.dark .preview blockquote p,
+.dark .preview blockquote a,
+.dark .preview blockquote code,
+.dark .preview pre p,
+.dark .preview pre a,
+.dark .preview pre code {
+  color: white;
+}
+
 .header {
   background-color: #F5F5F5;
 }
@@ -23,6 +68,7 @@
 }
 
 .input {
+  resize: none;
   color: #35393F;
   width: 100%;
   flex-grow: 1;
@@ -166,7 +212,6 @@
 }
 
 .section {
-  border-left: 1px solid #E4E4E4;
   box-sizing: border-box;
   height: 100%;
   display: flex;
@@ -185,6 +230,12 @@
   .sharing,
   .section:has(.preview) {
     width: 50%;
+  }
+  .section + .section {
+    border-left: 1px solid #E4E4E4;
+  }
+  .section.dark + .section.dark {
+    border-left: 1px solid #5A6069;
   }
 }
 
