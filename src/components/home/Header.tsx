@@ -16,20 +16,25 @@ interface HeaderProps {
 function Header(props: HeaderProps) {
   const { hamburgerOpen, setHamburgerOpen, classes, fileName, changeFileName } = props;
 
+  const attemptNameUpdate = (name: string, span: HTMLSpanElement) => {
+    if (name !== ".md" && name !== "") {
+      changeFileName(name);
+    } else {
+      span.textContent = fileName;
+    }
+  }
+
   const handleEnterKeyPress = (event: React.KeyboardEvent<HTMLSpanElement>) => {
     if(event.key === "Enter") {
       event.preventDefault();
-      const newName = event.currentTarget.textContent ?? "";
-      console.log(newName)
-
-      if (newName !== ".md" && newName !== "") {
-        changeFileName(newName);
-      } else {
-        event.currentTarget.textContent = fileName;
-      }
-
       event.currentTarget.blur();
     }
+  }
+
+  const handleFocusOut = (event: React.FocusEvent<HTMLSpanElement>) => {
+    const span = event.currentTarget;
+    const newName = span.textContent ?? "";
+    attemptNameUpdate(newName, span)
   }
 
   return (
@@ -39,7 +44,8 @@ function Header(props: HeaderProps) {
           <h2 className={styles.h2}>MARKDOWN</h2>
           <h3 className={styles.h3}><FileIcon /> <span
           contentEditable="true"
-          onKeyDown={handleEnterKeyPress}>{fileName}</span></h3>
+          onKeyDown={handleEnterKeyPress}
+          onBlur={handleFocusOut}>{fileName}</span></h3>
 
           <div className={styles.right}>
             <TrashIcon />
