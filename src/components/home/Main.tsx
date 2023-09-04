@@ -81,6 +81,21 @@ function Main() {
     setFileList(tempFileList);
   }
 
+  const saveFile = (content: string) => {
+    const tempFileList = [...fileList];
+    tempFileList[currentFile].content = content;
+
+    setFileList(tempFileList);
+  }
+
+  const deleteFile = () => {
+    const tempFileList = [...fileList];
+    tempFileList.splice(currentFile);
+    setCurrentFile(currentFile - 1)
+
+    setFileList(tempFileList);
+  }
+
   return (
     <>
         <Header
@@ -88,7 +103,8 @@ function Main() {
         hamburgerOpen={hamburgerOpen}
         setHamburgerOpen={setHamburgerOpen}
         fileName={fileList[currentFile].name}
-        changeFileName={changeFileName}/>
+        changeFileName={changeFileName}
+        deleteFile={deleteFile}/>
         <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
             {/* ToDo: Make default content last accessed file */}
             <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} content={fileList[currentFile].content} darkMode={darkMode}/>

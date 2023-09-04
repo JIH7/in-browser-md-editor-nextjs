@@ -11,10 +11,11 @@ interface HeaderProps {
   classes: string;
   fileName: string;
   changeFileName: Function;
+  deleteFile: Function;
 }
 
 function Header(props: HeaderProps) {
-  const { hamburgerOpen, setHamburgerOpen, classes, fileName, changeFileName } = props;
+  const { hamburgerOpen, setHamburgerOpen, classes, fileName, changeFileName, deleteFile } = props;
 
   const attemptNameUpdate = (name: string, span: HTMLSpanElement) => {
     if (name !== ".md" && name !== "") {
@@ -48,7 +49,7 @@ function Header(props: HeaderProps) {
           onBlur={handleFocusOut}>{fileName}</span></h3>
 
           <div className={styles.right}>
-            <TrashIcon />
+            <TrashIcon onClick={deleteFile} />
             <button>
               <SaveIcon />
               <span>Save Changes</span>
