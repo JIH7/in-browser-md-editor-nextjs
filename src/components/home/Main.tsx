@@ -11,21 +11,22 @@ import Sidebar from './Sidebar'
 function Main() {
 
   const getDarkModePreference = (): boolean => {
-    if(localStorage.getItem('darkModePref') !== null) {
-      const darkModePref = localStorage.getItem('darkModePref');
-  
-      if (darkModePref === 'true')
-        return true;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if(localStorage.getItem('darkModePref') !== null) {
+        const darkModePref = localStorage.getItem('darkModePref');
+    
+        if (darkModePref === 'true')
+          return true;
+        else
+          return false;
+      }
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+      if (prefersDark)
+        localStorage.setItem('darkModePref', 'true');
       else
-        return false;
+        localStorage.setItem('darkModePref', 'false')
     }
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-    if (prefersDark)
-      localStorage.setItem('darkModePref', 'true');
-    else
-      localStorage.setItem('darkModePref', 'false')
-  
     return false;
   }
   
@@ -44,25 +45,32 @@ function Main() {
   }
   
   const checkForLocalFiles = (): Array<DataSet> => {
-    if (localStorage.getItem('files') !== null) {
-      const files = JSON.parse(localStorage.getItem('files') ?? "");
-      return files;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if (localStorage.getItem('files') !== null) {
+        const files = JSON.parse(localStorage.getItem('files') ?? "");
+        return files;
+      } else {
+        Data.forEach((el) => {
+          setDate(el);
+        })
+        return Data;
+      }
     } else {
-      Data.forEach((el) => {
-        setDate(el);
-      })
       return Data;
     }
   }
   
   const checkLastCurrentFile = (): number => {
-    const currentFile = localStorage.getItem('currentFile');
-    if (currentFile !== null) {
-      return parseInt(currentFile);
-    } else {
-      localStorage.setItem('currentFile', '0')
-      return 0;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const currentFile = localStorage.getItem('currentFile');
+      if (currentFile !== null) {
+        return parseInt(currentFile);
+      } else {
+        localStorage.setItem('currentFile', '0')
+        return 0;
+      }
     }
+    return 0;
   }
 
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
