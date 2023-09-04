@@ -15,7 +15,7 @@ function ConfirmDelete(props: ConfirmDeleteProps) {
       <div className={styles.bg}></div>
       <section>
         <h4>Delete this document?</h4>
-        <p>Are you sure you want to delete the &apos;{currentFileName}&apos; document and it's contents? This action cannot be reversed.</p>
+        <p>Are you sure you want to delete the &apos;{currentFileName}&apos; document and it&apos;s contents? This action cannot be reversed.</p>
         <button onClick={() => {
           toggleMenu();
           deleteFile();
