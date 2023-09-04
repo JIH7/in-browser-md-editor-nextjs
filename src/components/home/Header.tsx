@@ -1,4 +1,4 @@
-import styles from "./header.module.css"
+import styles from "./styles/Header.module.css"
 
 import Hamburger from "./Hamburger"
 import FileIcon from "../../assets/icon-document.svg"

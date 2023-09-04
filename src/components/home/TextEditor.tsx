@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import styles from "./textEditor.module.css"
+import styles from "./styles/TextEditor.module.css"
 import ShowPreview from "../../assets/icon-show-preview.svg"
 import HidePreview from "../../assets/icon-hide-preview.svg"
 

@@ -1,4 +1,4 @@
-import styles from "./hamburger.module.css"
+import styles from "./styles/Hamburger.module.css"
 
 interface HamburgerProps {
   open: boolean;

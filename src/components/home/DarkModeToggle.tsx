@@ -1,4 +1,4 @@
-import styles from './darkModeToggle.module.css'
+import styles from './styles/DarkModeToggle.module.css'
 
 import MoonIcon from '../../assets/icon-dark-mode.svg'
 import SunIcon from '../../assets/icon-light-mode.svg'

@@ -1,4 +1,4 @@
-import styles from './sidebar.module.css';
+import styles from './styles/Sidebar.module.css';
 import FileTile from './FileTile';
 import DarkModeToggle from './DarkModeToggle';
 import DataSet from './DataSetInterface';
