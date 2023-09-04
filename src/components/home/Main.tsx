@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Data from '../../../data.json'
 import DataSet from './DataSetClass'
+import ConfirmDelete from './ConfirmDelete'
 import Header from './Header'
 import TextEditor from './TextEditor'
 import Sidebar from './Sidebar'
@@ -14,6 +15,7 @@ function Main() {
   const [currentFile, setCurrentFile] = useState(0)
   const [fileList, setFileList] = useState(Data);
   const [currentContent, setCurrentContent] = useState('');
+  const [deleteMenuOpen, setDeleteMenuOpen] = useState(false);
 
   useEffect(() => {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -25,6 +27,10 @@ function Main() {
   useEffect(() => {
     saveLocalFiles();
   }, [fileList])
+
+  const toggleDeleteMenu = () => {
+    setDeleteMenuOpen(!deleteMenuOpen);
+  }
 
   const checkForLocalFiles = () => {
     if (localStorage.getItem('files') !== null) {
@@ -91,20 +97,36 @@ function Main() {
   const deleteFile = () => {
     const tempFileList = [...fileList];
     tempFileList.splice(currentFile);
-    setCurrentFile(currentFile - 1)
+
+    if (tempFileList.length === 0){
+      tempFileList.push(new DataSet('untitled'))
+      setDate(tempFileList[0])
+    } else {
+      setCurrentFile(currentFile - 1)
+    }
 
     setFileList(tempFileList);
   }
 
   return (
     <>
+        {
+          deleteMenuOpen ?
+          <ConfirmDelete
+          deleteFile={deleteFile}
+          toggleMenu={toggleDeleteMenu}
+          darkMode={darkMode}/>
+          :
+          ''
+        }
+
         <Header
         classes={hamburgerOpen ? 'pushed' : ''}
         hamburgerOpen={hamburgerOpen}
         setHamburgerOpen={setHamburgerOpen}
         fileName={fileList[currentFile].name}
         changeFileName={changeFileName}
-        deleteFile={deleteFile}
+        deleteFile={toggleDeleteMenu}
         saveFile={saveContent}/>
         <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
             {/* ToDo: Make default content last accessed file */}

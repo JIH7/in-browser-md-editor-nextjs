@@ -1,0 +1,125 @@
+$black: #151619;
+$light-black: #1D1F22;
+$extremely-dark-gray: #2B2D31;
+$very-dark-gray: #35393F;
+$dark-gray: #5A6069;
+$gray: #7C8187;
+$light-gray: #C1C4CB;
+$very-light-gray: #E4E4E4;
+$extremely-light-gray: #F5F5F5;
+$white: #FFFFFF;
+$orange: #E46643;
+$light-orange: #F39765;
+
+.deletebox {
+    z-index: 10;
+
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    padding: 0 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    section {
+        z-index: 12;
+
+        border-radius: 4px;
+
+        padding: 24px;
+        box-sizing: border-box;
+        opacity: 100%;
+        background-color: white;
+
+        display: flex;
+        flex-direction: column;
+
+        > * {
+            margin: 0;
+        }
+
+        > * + * {
+            margin-block-start: 16px;
+        }
+
+
+        h4 {
+            color: $very-dark-gray;
+
+            font-family: 'Roboto Slab';
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        p {
+            color: $gray;
+
+            font-family: 'Roboto Slab';
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+        }
+
+        button {
+            height: 40px;
+            background-color: $orange;
+            color: $white;
+
+            border: none;
+            outline: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: $light-orange;
+        }
+    }
+}
+
+.deletebox.dark {
+    section {
+        background-color: $light-black;
+
+        h4 {
+            color: $white;
+        }
+
+        p {
+            color: $light-gray;
+        }
+    }
+}
+
+.bg {
+    z-index: 11;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: $black;
+    opacity: 40%;
+}
+
+@media only screen and (min-width: 768px) {
+    .deletebox {
+        align-items: center;
+
+        section {
+            width: 343px;
+        }
+    }
+}

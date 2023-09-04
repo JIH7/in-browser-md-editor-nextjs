@@ -1,3 +1,88 @@
+.deletebox {
+  z-index: 10;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.deletebox section {
+  z-index: 12;
+  border-radius: 4px;
+  padding: 24px;
+  box-sizing: border-box;
+  opacity: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+.deletebox section > * {
+  margin: 0;
+}
+.deletebox section > * + * {
+  margin-block-start: 16px;
+}
+.deletebox section h4 {
+  color: #35393F;
+  font-family: "Roboto Slab";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.deletebox section p {
+  color: #7C8187;
+  font-family: "Roboto Slab";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.deletebox section button {
+  height: 40px;
+  background-color: #E46643;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+.deletebox section button:hover {
+  background-color: #F39765;
+}
 
+.deletebox.dark section {
+  background-color: #1D1F22;
+}
+.deletebox.dark section h4 {
+  color: #FFFFFF;
+}
+.deletebox.dark section p {
+  color: #C1C4CB;
+}
+
+.bg {
+  z-index: 11;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #151619;
+  opacity: 40%;
+}
+
+@media only screen and (min-width: 768px) {
+  .deletebox {
+    align-items: center;
+  }
+  .deletebox section {
+    width: 343px;
+  }
+}
 
 /*# sourceMappingURL=ConfirmDelete.module.css.map */
