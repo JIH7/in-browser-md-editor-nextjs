@@ -8,39 +8,87 @@ import Header from './Header'
 import TextEditor from './TextEditor'
 import Sidebar from './Sidebar'
 
+const getDarkModePreference = (): boolean => {
+  if(localStorage.getItem('darkModePref') !== null) {
+    const darkModePref = localStorage.getItem('darkModePref');
+
+    if (darkModePref === 'true')
+      return true;
+    else
+      return false;
+  }
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (prefersDark)
+    localStorage.setItem('darkModePref', 'true');
+  else
+    localStorage.setItem('darkModePref', 'false')
+
+  return false;
+}
+
+const setDate = (data: DataSet) => {
+  const now = new Date();
+  let year = now.getFullYear().toString();
+  let month = (now.getMonth() + 1).toString();
+  if (Number(month) < 10)
+    month = '0' + month;
+
+  let day = now.getDate().toString();
+  if(Number(day) < 10)
+    day = '0' + day;
+
+  data.createdAt = `${month}-${day}-${year}`
+}
+
+const checkForLocalFiles = (): Array<DataSet> => {
+  if (localStorage.getItem('files') !== null) {
+    const files = JSON.parse(localStorage.getItem('files') ?? "");
+    return files;
+  } else {
+    Data.forEach((el) => {
+      setDate(el);
+    })
+    return Data;
+  }
+}
+
+const checkLastCurrentFile = (): number => {
+  const currentFile = localStorage.getItem('currentFile');
+  if (currentFile !== null) {
+    return parseInt(currentFile);
+  } else {
+    localStorage.setItem('currentFile', '0')
+    return 0;
+  }
+}
+
 function Main() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-  const [currentFile, setCurrentFile] = useState(0)
-  const [fileList, setFileList] = useState(Data);
+  const [darkMode, setDarkMode] = useState(getDarkModePreference());
+  const [currentFile, setCurrentFile] = useState(checkLastCurrentFile());
+  const [fileList, setFileList] = useState(checkForLocalFiles());
   const [currentContent, setCurrentContent] = useState('');
   const [deleteMenuOpen, setDeleteMenuOpen] = useState(false);
 
   useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDarkMode(prefersDark);
-    checkForLocalFiles();
-   
-  }, []);
+    if (darkMode)
+      localStorage.setItem('darkModePref', 'true');
+    else
+      localStorage.setItem('darkModePref', 'false');
+  }, [darkMode]);
 
   useEffect(() => {
     saveLocalFiles();
   }, [fileList])
 
+  useEffect(() => {
+    localStorage.setItem('currentFile', currentFile.toString())
+  }, [currentFile])
+
   const toggleDeleteMenu = () => {
     setDeleteMenuOpen(!deleteMenuOpen);
-  }
-
-  const checkForLocalFiles = () => {
-    if (localStorage.getItem('files') !== null) {
-      const files = JSON.parse(localStorage.getItem('files') ?? "");
-      setFileList(files);
-    } else {
-      Data.forEach((el) => {
-        setDate(el);
-      })
-    }
   }
 
   const saveContent = () => {
@@ -57,22 +105,8 @@ function Main() {
     setDarkMode(!darkMode);
   }
 
-  const setDate = (data: DataSet) => {
-    const now = new Date();
-    let year = now.getFullYear().toString();
-    let month = (now.getMonth() + 1).toString();
-    if (Number(month) < 10)
-      month = '0' + month;
-
-    let day = now.getDate().toString();
-    if(Number(day) < 10)
-      day = '0' + day;
-
-    data.createdAt = `${month}-${day}-${year}`
-  }
-
   const createFile = () => {
-    const newFile = new DataSet('untitled')
+    const newFile = new DataSet('untitled-document')
     
     let tempFileList = [...fileList];
     setDate(newFile)
