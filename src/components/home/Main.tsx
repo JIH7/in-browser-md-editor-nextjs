@@ -8,62 +8,63 @@ import Header from './Header'
 import TextEditor from './TextEditor'
 import Sidebar from './Sidebar'
 
-const getDarkModePreference = (): boolean => {
-  if(localStorage.getItem('darkModePref') !== null) {
-    const darkModePref = localStorage.getItem('darkModePref');
-
-    if (darkModePref === 'true')
-      return true;
-    else
-      return false;
-  }
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  if (prefersDark)
-    localStorage.setItem('darkModePref', 'true');
-  else
-    localStorage.setItem('darkModePref', 'false')
-
-  return false;
-}
-
-const setDate = (data: DataSet) => {
-  const now = new Date();
-  let year = now.getFullYear().toString();
-  let month = (now.getMonth() + 1).toString();
-  if (Number(month) < 10)
-    month = '0' + month;
-
-  let day = now.getDate().toString();
-  if(Number(day) < 10)
-    day = '0' + day;
-
-  data.createdAt = `${month}-${day}-${year}`
-}
-
-const checkForLocalFiles = (): Array<DataSet> => {
-  if (localStorage.getItem('files') !== null) {
-    const files = JSON.parse(localStorage.getItem('files') ?? "");
-    return files;
-  } else {
-    Data.forEach((el) => {
-      setDate(el);
-    })
-    return Data;
-  }
-}
-
-const checkLastCurrentFile = (): number => {
-  const currentFile = localStorage.getItem('currentFile');
-  if (currentFile !== null) {
-    return parseInt(currentFile);
-  } else {
-    localStorage.setItem('currentFile', '0')
-    return 0;
-  }
-}
-
 function Main() {
+
+  const getDarkModePreference = (): boolean => {
+    if(localStorage.getItem('darkModePref') !== null) {
+      const darkModePref = localStorage.getItem('darkModePref');
+  
+      if (darkModePref === 'true')
+        return true;
+      else
+        return false;
+    }
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+    if (prefersDark)
+      localStorage.setItem('darkModePref', 'true');
+    else
+      localStorage.setItem('darkModePref', 'false')
+  
+    return false;
+  }
+  
+  const setDate = (data: DataSet) => {
+    const now = new Date();
+    let year = now.getFullYear().toString();
+    let month = (now.getMonth() + 1).toString();
+    if (Number(month) < 10)
+      month = '0' + month;
+  
+    let day = now.getDate().toString();
+    if(Number(day) < 10)
+      day = '0' + day;
+  
+    data.createdAt = `${month}-${day}-${year}`
+  }
+  
+  const checkForLocalFiles = (): Array<DataSet> => {
+    if (localStorage.getItem('files') !== null) {
+      const files = JSON.parse(localStorage.getItem('files') ?? "");
+      return files;
+    } else {
+      Data.forEach((el) => {
+        setDate(el);
+      })
+      return Data;
+    }
+  }
+  
+  const checkLastCurrentFile = (): number => {
+    const currentFile = localStorage.getItem('currentFile');
+    if (currentFile !== null) {
+      return parseInt(currentFile);
+    } else {
+      localStorage.setItem('currentFile', '0')
+      return 0;
+    }
+  }
+
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [darkMode, setDarkMode] = useState(getDarkModePreference());
