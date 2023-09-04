@@ -10,28 +10,28 @@ interface TextEditorProps {
   showPreview: boolean;
   setShowPreview: Function;
   content: string;
+  setCurrentContent: Function;
   darkMode: boolean;
-  
 }
 
 function TextEditor(props: TextEditorProps) {
-  const { showPreview, setShowPreview, content, darkMode } = props;
+  const { showPreview, setShowPreview, content, setCurrentContent, darkMode } = props;
   const [ previewText, setPreviewText ] = useState(content);
 
   useEffect(() => {
     setPreviewText(content);
+    setCurrentContent(content);
     const textArea = document.querySelector('textarea');
 
     if(textArea) {
       textArea.value = content;
     }
-    console.log("useEffect trigger")
   }, [content])
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputText = event.target.value;
 
-
+    setCurrentContent(inputText);
     setPreviewText(inputText);
   }
 

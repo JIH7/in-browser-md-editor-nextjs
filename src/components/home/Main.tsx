@@ -13,11 +13,12 @@ function Main() {
   const [darkMode, setDarkMode] = useState(false);
   const [currentFile, setCurrentFile] = useState(0)
   const [fileList, setFileList] = useState(Data);
+  const [currentContent, setCurrentContent] = useState('');
 
   useEffect(() => {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setDarkMode(prefersDark);
-    checkForLocalFiles()
+    checkForLocalFiles();
    
   }, []);
 
@@ -34,6 +35,12 @@ function Main() {
         setDate(el);
       })
     }
+  }
+
+  const saveContent = () => {
+    const tempFileList = [...fileList];
+    tempFileList[currentFile].content = currentContent;
+    setFileList(tempFileList);
   }
 
   const saveLocalFiles = () => {
@@ -81,13 +88,6 @@ function Main() {
     setFileList(tempFileList);
   }
 
-  const saveFile = (content: string) => {
-    const tempFileList = [...fileList];
-    tempFileList[currentFile].content = content;
-
-    setFileList(tempFileList);
-  }
-
   const deleteFile = () => {
     const tempFileList = [...fileList];
     tempFileList.splice(currentFile);
@@ -104,10 +104,15 @@ function Main() {
         setHamburgerOpen={setHamburgerOpen}
         fileName={fileList[currentFile].name}
         changeFileName={changeFileName}
-        deleteFile={deleteFile}/>
+        deleteFile={deleteFile}
+        saveFile={saveContent}/>
         <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
             {/* ToDo: Make default content last accessed file */}
-            <TextEditor showPreview={showPreview} setShowPreview={setShowPreview} content={fileList[currentFile].content} darkMode={darkMode}/>
+            <TextEditor showPreview={showPreview}
+            setShowPreview={setShowPreview}
+            content={fileList[currentFile].content}
+            setCurrentContent={setCurrentContent}
+            darkMode={darkMode}/>
         </main>
         <Sidebar
         classes={hamburgerOpen ? 'pushed' : ''}
