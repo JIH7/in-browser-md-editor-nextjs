@@ -73,6 +73,8 @@ function Main() {
     return 0;
   }
 
+  const [loading, setLoading] = useState(true);
+
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [darkMode, setDarkMode] = useState(getDarkModePreference());
@@ -80,6 +82,10 @@ function Main() {
   const [fileList, setFileList] = useState(checkForLocalFiles());
   const [currentContent, setCurrentContent] = useState('');
   const [deleteMenuOpen, setDeleteMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [])
 
   useEffect(() => {
     if (darkMode)
@@ -153,40 +159,47 @@ function Main() {
 
   return (
     <>
-        {
-          deleteMenuOpen ?
-          <ConfirmDelete
-          deleteFile={deleteFile}
-          toggleMenu={toggleDeleteMenu}
-          currentFileName={fileList[currentFile].name}
-          darkMode={darkMode}/>
-          :
-          ''
-        }
-
-        <Header
-        classes={hamburgerOpen ? 'pushed' : ''}
-        hamburgerOpen={hamburgerOpen}
-        setHamburgerOpen={setHamburgerOpen}
-        fileName={fileList[currentFile].name}
-        changeFileName={changeFileName}
-        deleteFile={toggleDeleteMenu}
-        saveFile={saveContent}/>
-        <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
-            {/* ToDo: Make default content last accessed file */}
-            <TextEditor showPreview={showPreview}
-            setShowPreview={setShowPreview}
-            content={fileList[currentFile].content}
-            setCurrentContent={setCurrentContent}
+      {
+        !loading ?
+        <>
+          {
+            deleteMenuOpen ?
+            <ConfirmDelete
+            deleteFile={deleteFile}
+            toggleMenu={toggleDeleteMenu}
+            currentFileName={fileList[currentFile].name}
             darkMode={darkMode}/>
-        </main>
-        <Sidebar
-        classes={hamburgerOpen ? 'pushed' : ''}
-        darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
-        setCurrentFile={setCurrentFile}
-        fileList={fileList}
-        addFile={createFile}/>
+            :
+            ''
+          }
+
+          <Header
+          classes={hamburgerOpen ? 'pushed' : ''}
+          hamburgerOpen={hamburgerOpen}
+          setHamburgerOpen={setHamburgerOpen}
+          fileName={fileList[currentFile].name}
+          changeFileName={changeFileName}
+          deleteFile={toggleDeleteMenu}
+          saveFile={saveContent}/>
+          <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
+              {/* ToDo: Make default content last accessed file */}
+              <TextEditor showPreview={showPreview}
+              setShowPreview={setShowPreview}
+              content={fileList[currentFile].content}
+              setCurrentContent={setCurrentContent}
+              darkMode={darkMode}/>
+          </main>
+          <Sidebar
+          classes={hamburgerOpen ? 'pushed' : ''}
+          darkMode={darkMode}
+          toggleDarkMode={toggleDarkMode}
+          setCurrentFile={setCurrentFile}
+          fileList={fileList}
+          addFile={createFile}/>
+        </>
+        :
+        <></>
+      }
     </>
   )
 }
