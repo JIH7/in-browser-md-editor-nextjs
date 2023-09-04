@@ -158,6 +158,7 @@ function Main() {
           <ConfirmDelete
           deleteFile={deleteFile}
           toggleMenu={toggleDeleteMenu}
+          currentFileName={fileList[currentFile].name}
           darkMode={darkMode}/>
           :
           ''
