@@ -150,7 +150,7 @@ function Main() {
     if (tempFileList.length === 0){
       tempFileList.push(new DataSet('untitled'))
       setDate(tempFileList[0])
-    } else {
+    } else if (currentFile !== 0) {
       setCurrentFile(currentFile - 1)
     }
 
