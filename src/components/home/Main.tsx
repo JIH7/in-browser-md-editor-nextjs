@@ -182,7 +182,6 @@ function Main() {
           deleteFile={toggleDeleteMenu}
           saveFile={saveContent}/>
           <main className={`${hamburgerOpen ? 'pushed' : ''} ${darkMode ? 'dark' : ''}`}>
-              {/* ToDo: Make default content last accessed file */}
               <TextEditor showPreview={showPreview}
               setShowPreview={setShowPreview}
               content={fileList[currentFile].content}

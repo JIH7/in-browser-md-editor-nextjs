@@ -295,12 +295,22 @@ $orange: #E46643;
 }
 
 @media only screen and (min-width: 768px) {
+    .section:has(.preview) {
+        display: flex;
+        width: 0%;
+    }
+
     .sharing {
         display: flex;
     }
 
+    .section {
+        transition: width .4s ease-in;
+    }
+
     .sharing,
-    .section:has(.preview) {
+    .sharing + .section:has(.preview) {
+        
         width: 50%;
     }
 
