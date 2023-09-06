@@ -145,7 +145,7 @@ function Main() {
 
   const deleteFile = () => {
     const tempFileList = [...fileList];
-    tempFileList.splice(currentFile);
+    tempFileList.splice(currentFile, 1);
 
     if (tempFileList.length === 0){
       tempFileList.push(new DataSet('untitled'))

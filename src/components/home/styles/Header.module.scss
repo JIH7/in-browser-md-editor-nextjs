@@ -24,9 +24,14 @@ $light-orange: #F39765;
         outline: none;
 
         min-width: 12px;
+        max-width: 60vw;
         padding: 4px;
         box-sizing: border-box;
         border-radius: 4px;
+
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     > span:hover {
@@ -52,6 +57,7 @@ $light-orange: #F39765;
         margin-right: 24px;
         padding: 8px;
         border-radius: 4px;
+
     }
 
     > svg:hover {

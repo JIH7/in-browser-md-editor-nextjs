@@ -17,9 +17,13 @@
 .h3 > span {
   outline: none;
   min-width: 12px;
+  max-width: 60vw;
   padding: 4px;
   box-sizing: border-box;
   border-radius: 4px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .h3 > span:hover {
   background-color: #5A6069;

@@ -2,6 +2,7 @@ import styles from "./styles/Header.module.css"
 
 import Hamburger from "./Hamburger"
 import FileIcon from "../../assets/icon-document.svg"
+import DownloadIcon from "../../assets/icon-download.svg"
 import TrashIcon from "../../assets/icon-delete.svg"
 import SaveIcon from "../../assets/icon-save.svg"
 
@@ -50,6 +51,7 @@ function Header(props: HeaderProps) {
           onBlur={handleFocusOut}>{fileName}</span></h3>
 
           <div className={styles.right}>
+            {/* <DownloadIcon /> */}
             <TrashIcon onClick={deleteFile} />
             <button onClick={() => saveFile()}>
               <SaveIcon/>
