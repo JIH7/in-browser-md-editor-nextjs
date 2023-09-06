@@ -41,6 +41,15 @@ main.pushed {
     left: $aside-width;
 }
 
+main.pushed *,
+header.pushed h2,
+header.pushed h3,
+header.pushed h3 span,
+header.pushed > div {
+    user-select: none;
+    pointer-events: none;
+}
+
 aside {
     position: fixed;
     transition: all .35s ease-out;
